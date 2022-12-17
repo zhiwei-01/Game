@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class 主角移動街道使用 : MonoBehaviour
+public class 街道移動測試修改 : MonoBehaviour
 {
     public float speed;
     public float jumpforce;//跳躍力度

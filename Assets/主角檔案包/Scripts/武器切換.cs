@@ -7,14 +7,14 @@ using UnityEngine.U2D.Animation;
 public class 武器切換 : MonoBehaviour
 {
     public SpriteResolver 武器;
+    public Animator an;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        
-    }
+        an = GetComponent<Animator>();
+    }  
 
-    // Update is called once per frame
     void Update()
     {
         武器觸發();
@@ -29,7 +29,14 @@ public class 武器切換 : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             武器.SetCategoryAndLabel("武器", "棒");
-        }
+        } 
+ 
+        /* if (an.GetCurrentAnimatorStateInfo(0).IsName("Over"))
+         {
+
+         }*/
+
+
     }
 
 
