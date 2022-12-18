@@ -43,10 +43,11 @@ public class Dialogue3 : MonoBehaviour
         {
             gameObject.SetActive(false);
             index = 0;
+            媽媽鎖鏈動畫.是否完成對話++;
             return;
 
         }
-        
+
         /* if(Input.GetKeyDown(KeyCode.Space) && textFinished)//檢測當前行是否輸出完
         {
             
@@ -169,6 +170,15 @@ public class Dialogue3 : MonoBehaviour
         index++;
 
 
+    }
+
+
+    public void 點skip() 
+    {
+        gameObject.SetActive(false);
+        index = 0;
+        媽媽鎖鏈動畫.是否完成對話++;
+        return;
     }
 
 }
