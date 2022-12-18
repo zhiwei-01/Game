@@ -6,6 +6,8 @@ public class 街道移動測試修改 : MonoBehaviour
 {
     public float speed;
     public float jumpforce;//跳躍力度
+    private Vector3 truntrue; 
+    
     
     Rigidbody2D rd;
     Animator an;
@@ -52,6 +54,9 @@ public class 街道移動測試修改 : MonoBehaviour
         if(face !=0 )
         {
             transform.localScale = new Vector3(face,1,1);
+            truntrue = new Vector3(this.transform.position.x - 10.2f, this.transform.position.y,0);
+            
+
         }
     }
 }

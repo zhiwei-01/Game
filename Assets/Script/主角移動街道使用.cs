@@ -14,13 +14,16 @@ public class 主角移動街道使用 : MonoBehaviour
     public Transform checker;//檢查器的transform
     float checkRadius = 0.2f;//檢查器的範圍大小
     public LayerMask GroundLayer; //地板的圖層
+    
+    
    
   
     
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
-        an = GetComponent<Animator>();    
+        an = GetComponent<Animator>();   
+         
         
     }
 
@@ -52,6 +55,7 @@ public class 主角移動街道使用 : MonoBehaviour
         if(face !=0 )
         {
             transform.localScale = new Vector3(face,1,1);
+            
         }
     }
 }
