@@ -31,10 +31,7 @@ public class 武器切換 : MonoBehaviour
             武器.SetCategoryAndLabel("武器", "棒");
         } 
  
-        /* if (an.GetCurrentAnimatorStateInfo(0).IsName("Over"))
-         {
-
-         }*/
+        
 
 
     }

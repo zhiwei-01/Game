@@ -8,22 +8,27 @@ public class 主角移動街道使用 : MonoBehaviour
     public float jumpforce;//跳躍力度
     
     Rigidbody2D rd;
-    Animator an;
+    Animator jumpAn;
+    Animator attackAn;
+    Animator maginAttackAn;
+
 
     public bool isGround;//有沒有在地板
     public Transform checker;//檢查器的transform
     float checkRadius = 0.2f;//檢查器的範圍大小
     public LayerMask GroundLayer; //地板的圖層
+
     
-    
+   
    
   
     
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
-        an = GetComponent<Animator>();   
-         
+        jumpAn = GetComponent<Animator>();   
+        attackAn = GetComponent<Animator>();
+        maginAttackAn = GetComponent<Animator>();
         
     }
 
@@ -32,7 +37,26 @@ public class 主角移動街道使用 : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             rd.velocity = Vector2.up*jumpforce;
-            an.SetBool("isGround",false);
+            jumpAn.SetBool("isGround",false);
+        }
+
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            attackAn.SetBool("attack",true);
+        }
+        else
+        {
+           attackAn.SetBool("attack",false);
+        }
+
+         if(Input.GetKey("e"))
+        {
+            attackAn.SetBool("maginAttack",true);
+        }
+        else
+        {
+           attackAn.SetBool("maginAttack",false);
         }
 
        
@@ -43,14 +67,14 @@ public class 主角移動街道使用 : MonoBehaviour
     {
         isGround = Physics2D.OverlapCircle(checker.position,checkRadius,GroundLayer);        
         
-        an.SetBool("isGround",isGround);
+        jumpAn.SetBool("isGround",isGround);
 
         float move = Input.GetAxis("Horizontal");
         float face = Input.GetAxisRaw("Horizontal");
         
         rd.velocity = new Vector2(speed*move,rd.velocity.y);
 
-        an.SetFloat("move",Mathf.Abs(move));
+        jumpAn.SetFloat("move",Mathf.Abs(move));
 
         if(face !=0 )
         {
