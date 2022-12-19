@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Dialogue4 : MonoBehaviour
+public class 對話4之0 : MonoBehaviour
 {
     [Header("目前狀態")]
     public GameObject 目前場景;
     public GameObject 下個場景;
+    public GameObject 控制畫布;
+    public GameObject 控制過場;
+    public Animator 過場;
 
     [Header("UI組件")]
     public Text textLabel;
-    public Image faceImage;
-   
-    
+    public Image 畫面;
+
+
     [Header("文字腳本4")]
     public TextAsset textFile;
     public int index;
@@ -22,7 +25,8 @@ public class Dialogue4 : MonoBehaviour
     public GameObject tip;
 
     [Header("角色")]
-    public Sprite face00,face21,face18,face22,face19,face23,face20,face24,face17;
+    public Sprite 主角反駁;
+    public Sprite 媽媽訓話;
 
     bool textFinished;//是否完成打字
     bool cancelTyping;//取消打字
@@ -31,47 +35,39 @@ public class Dialogue4 : MonoBehaviour
     void Awake()
     {
         GetTextFormFile(textFile);
+        控制過場.SetActive(false);
     }
-    
+
     private void OnEnable()
     {
-        //textLabel.text = textList[index];
-        //index++;
         textFinished = true;
         StartCoroutine(SetTextUI());
-        
+
     }
 
     void Update()
     {
-        if( index == textList.Count)
+        if (index == textList.Count)
         {
             目前場景.SetActive(false);
             下個場景.SetActive(true);
             index = 0;
             return;
-
         }
-        
-        /* if(Input.GetKeyDown(KeyCode.Space) && textFinished)//檢測當前行是否輸出完
-        {
-            
-            StartCoroutine(SetTextUI());
-        }*/
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(textFinished && !cancelTyping)
+            if (textFinished && !cancelTyping)
             {
                 StartCoroutine(SetTextUI());
             }
-            else if(!textFinished && !cancelTyping)
+            else if (!textFinished && !cancelTyping)
             {
                 cancelTyping = true;
             }
         }
 
-        if(index == 2)
+        if (index == 2)
         {
             tip.SetActive(true);
         }
@@ -79,8 +75,6 @@ public class Dialogue4 : MonoBehaviour
         {
             tip.SetActive(false);
         }
-
-      
 
     }
 
@@ -90,7 +84,7 @@ public class Dialogue4 : MonoBehaviour
         index = 0;
         var lineDate = file.text.Split('\n');
 
-        foreach(var line in lineDate)
+        foreach (var line in lineDate)
         {
             textList.Add(line);
         }
@@ -105,81 +99,33 @@ public class Dialogue4 : MonoBehaviour
 
         {
 
-            case "A":
-
-                faceImage.sprite = face00;
-
+            case "旁":
+                控制畫布.SetActive(false);
                 index++;
-
                 break;
 
-            case "B":
-
-                faceImage.sprite = face21;
-
+            case "主":
+                控制畫布.SetActive(true);
+                畫面.sprite = 主角反駁;
                 index++;
-
                 break;
-            case "C":
 
-                faceImage.sprite = face18;
-
+            case "媽":
+                控制畫布.SetActive(true);
+                畫面.sprite = 媽媽訓話;
                 index++;
-
                 break;
-            case "D":
 
-                faceImage.sprite = face22;
-
+            case "過場":
+                控制過場.SetActive(true);
+                過場.SetBool("是否要過場",true);
                 index++;
-
-                break;
-            case "E":
-
-                faceImage.sprite = face19;
-
-                index++;
-
-                break;
-            case "F":
-
-                faceImage.sprite = face23;
-
-                index++;
-
-                break;
-            case "G":
-
-                faceImage.sprite = face20;
-
-                index++;
-
-                break;
-            case "H":
-
-                faceImage.sprite = face24;
-
-                index++;
-
-                break;
-            case "I":
-                faceImage.sprite = face17;
-
-                index++;
-
                 break;
 
         }
 
-        /*for(int i=0; i<textList[index].Length; i++ )
-        {
-            textLabel.text  += textList[index][i];
-
-            yield return new WaitForSeconds(textSpeed);
-        }*/
-
         int letter = 0;
-        while(!cancelTyping && letter < textList[index].Length-1)
+        while (!cancelTyping && letter < textList[index].Length - 1)
         {
             textLabel.text += textList[index][letter];
             letter++;
@@ -190,10 +136,11 @@ public class Dialogue4 : MonoBehaviour
         textFinished = true;//輸出完畢
         index++;
 
-
     }
     public void 點擊按鈕()
     {
-        index = 40;
+        index = 13;
     }
+
 }
+
