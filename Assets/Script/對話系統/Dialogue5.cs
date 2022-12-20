@@ -19,7 +19,7 @@ public class Dialogue5 : MonoBehaviour
     public TextAsset textFile;
     public int index;
     public float textSpeed;
-    public GameObject tip;
+    //public GameObject tip;
 
     [Header("角色")]
     public Sprite 旁白00;
@@ -65,7 +65,7 @@ public class Dialogue5 : MonoBehaviour
             }
         }
 
-        if(index == 2)
+        /*if(index == 2)
         {
             tip.SetActive(true);
 
@@ -73,7 +73,7 @@ public class Dialogue5 : MonoBehaviour
         else
         {
             tip.SetActive(false);
-        }
+        }*/
     }
 
     void GetTextFormFile(TextAsset file)

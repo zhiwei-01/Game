@@ -11042,7 +11042,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1038708352}
-  - {fileID: 1321070784}
+  - {fileID: 0}
   - {fileID: 1700609877}
   - {fileID: 283056235}
   - {fileID: 1197905976}
@@ -11112,7 +11112,7 @@ MonoBehaviour:
   textFile: {fileID: 4900000, guid: 144f2a289acaa6e4dbfbd582c631b926, type: 3}
   index: 0
   textSpeed: 0.1
-  tip: {fileID: 1321070783}
+  tip: {fileID: 0}
   "\u65C1\u767D00": {fileID: 21300000, guid: 6270e253198d49f4cb002ab05eb6eb22, type: 3}
   "\u4E3B\u89D215": {fileID: 21300000, guid: 535a39fd79e72af4f9e27d966ae8d3be, type: 3}
   "\u53CB\u4EBA30": {fileID: 21300000, guid: fba887e03888d7c4391e1bdf8ff27b80, type: 3}
