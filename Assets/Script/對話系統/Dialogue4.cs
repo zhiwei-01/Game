@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Dialogue4 : MonoBehaviour
 {
+    [Header("目前狀態")]
+    public GameObject 目前場景;
+    public GameObject 下個場景;
+
     [Header("UI組件")]
     public Text textLabel;
     public Image faceImage;
@@ -26,7 +30,7 @@ public class Dialogue4 : MonoBehaviour
     List<string> textList = new List<string>();
     void Awake()
     {
-        GetTextFormFile(textFile);       
+        GetTextFormFile(textFile);
     }
     
     private void OnEnable()
@@ -40,11 +44,11 @@ public class Dialogue4 : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && index == textList.Count)
+        if( index == textList.Count)
         {
-            gameObject.SetActive(false);
+            目前場景.SetActive(false);
+            下個場景.SetActive(true);
             index = 0;
-            SceneManager.LoadScene("街道");
             return;
 
         }
@@ -159,17 +163,11 @@ public class Dialogue4 : MonoBehaviour
 
                 break;
             case "I":
-
                 faceImage.sprite = face17;
 
                 index++;
 
                 break;
-            
-            
-            
-
-            
 
         }
 
@@ -194,5 +192,8 @@ public class Dialogue4 : MonoBehaviour
 
 
     }
-
+    public void 點擊按鈕()
+    {
+        index = 40;
+    }
 }

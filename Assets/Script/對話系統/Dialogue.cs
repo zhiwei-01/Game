@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
+    [Header("對話框底圖控制")]
+    public Image 對話框畫面;
+    public Sprite 底圖;
+    public Sprite 旁白;
+
     [Header("UI組件")]
     public Text textLabel;
     public Image faceImage;
     public GameObject tip;
-    public GameObject aside;
+    //public GameObject aside;
     public GameObject dialogue;
    
   
@@ -44,11 +49,8 @@ public class Dialogue : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && index == textList.Count)
         {
-            gameObject.SetActive(false);
+            dialogue.SetActive(false);
             index = 0;
-
-
-            
             return;
 
         }
@@ -77,23 +79,9 @@ public class Dialogue : MonoBehaviour
             tip.SetActive(true);
             
         }
-        
-        else if(index == 63)
-        {
-            
-            aside.SetActive(true);
-        }
-        else if(index == 64)
-        {
-            
-            aside.SetActive(true);
-        }
         else
         {
-            
-            
             tip.SetActive(false);
-            aside.SetActive(false);
         }
 
     }
@@ -158,7 +146,7 @@ public class Dialogue : MonoBehaviour
 
                 break;
             case "F":
-
+                對話框畫面.sprite = 底圖;
                 faceImage.sprite = face05;
 
                 index++;
@@ -200,6 +188,11 @@ public class Dialogue : MonoBehaviour
 
                 index++;
 
+                break;
+
+            case "旁":
+                對話框畫面.sprite = 旁白;
+                index++;
                 break;
 
             
