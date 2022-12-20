@@ -26,6 +26,7 @@ public class Dialogue6 : MonoBehaviour
     public Sprite 主16;
     public Sprite 主17;
     public Sprite 男25;
+    public Sprite 男26;
     public Sprite 男28;
 
     bool textFinished;//是否完成打字
@@ -117,6 +118,11 @@ public class Dialogue6 : MonoBehaviour
 
             case "男25":
                 臉.sprite = 男25;
+                index++;
+                break;
+
+            case "男26":
+                臉.sprite = 男26;
                 index++;
                 break;
 

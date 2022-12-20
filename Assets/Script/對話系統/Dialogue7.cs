@@ -39,8 +39,6 @@ public class Dialogue7 : MonoBehaviour
     
     private void OnEnable()
     {
-        //textLabel.text = textList[index];
-        //index++;
         textFinished = true;
         StartCoroutine(SetTextUI());
         
@@ -53,6 +51,7 @@ public class Dialogue7 : MonoBehaviour
             gameObject.SetActive(false);
             index = 0;
             //SceneManager.LoadScene("街道");
+            SceneManager.LoadScene("結束劇情");
             return;
         }
 
@@ -154,6 +153,7 @@ public class Dialogue7 : MonoBehaviour
             gameObject.SetActive(false);
             index = 0;
             //SceneManager.LoadScene("街道");
+            SceneManager.LoadScene("結束劇情");
             return;
         }
     }
