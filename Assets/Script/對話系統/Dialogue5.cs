@@ -6,19 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class Dialogue5 : MonoBehaviour
 {
+    [Header("要隱藏的其餘UI")]
+    public GameObject 要隱藏的UI;
+    public GameObject 目前劇情;
+
     [Header("UI組件")]
     public Text textLabel;
-    public Image faceImage;
+    public Image 畫面;
    
     
-    [Header("文字腳本4")]
+    [Header("文字腳本5")]
     public TextAsset textFile;
     public int index;
     public float textSpeed;
     public GameObject tip;
 
     [Header("角色")]
-    public Sprite face00,face21,face18,face22,face19,face23,face20,face24,face17;
+    public Sprite 旁白00;
+    public Sprite 主角15;
+    public Sprite 友人30;
 
     bool textFinished;//是否完成打字
     bool cancelTyping;//取消打字
@@ -26,16 +32,14 @@ public class Dialogue5 : MonoBehaviour
     List<string> textList = new List<string>();
     void Awake()
     {
-        GetTextFormFile(textFile);       
+        GetTextFormFile(textFile); 
     }
     
     private void OnEnable()
     {
-        //textLabel.text = textList[index];
-        //index++;
         textFinished = true;
         StartCoroutine(SetTextUI());
-        
+        要隱藏的UI.SetActive(false);
     }
 
     void Update()
@@ -44,16 +48,10 @@ public class Dialogue5 : MonoBehaviour
         {
             gameObject.SetActive(false);
             index = 0;
-            SceneManager.LoadScene("街道");
+            SceneManager.LoadScene("街道打鬥");
             return;
 
         }
-        
-        /* if(Input.GetKeyDown(KeyCode.Space) && textFinished)//檢測當前行是否輸出完
-        {
-            
-            StartCoroutine(SetTextUI());
-        }*/
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -70,14 +68,12 @@ public class Dialogue5 : MonoBehaviour
         if(index == 2)
         {
             tip.SetActive(true);
+
         }
         else
         {
             tip.SetActive(false);
         }
-
-      
-
     }
 
     void GetTextFormFile(TextAsset file)
@@ -100,85 +96,22 @@ public class Dialogue5 : MonoBehaviour
         switch (textList[index].Trim().ToString())
 
         {
-
-            case "A":
-
-                faceImage.sprite = face00;
-
+            case "旁":
+                畫面.sprite = 旁白00;
                 index++;
-
                 break;
 
-            case "B":
-
-                faceImage.sprite = face21;
-
+            case "友":
+                畫面.sprite = 友人30;
                 index++;
-
                 break;
-            case "C":
 
-                faceImage.sprite = face18;
-
+            case "主":
+                畫面.sprite = 主角15;
                 index++;
-
                 break;
-            case "D":
-
-                faceImage.sprite = face22;
-
-                index++;
-
-                break;
-            case "E":
-
-                faceImage.sprite = face19;
-
-                index++;
-
-                break;
-            case "F":
-
-                faceImage.sprite = face23;
-
-                index++;
-
-                break;
-            case "G":
-
-                faceImage.sprite = face20;
-
-                index++;
-
-                break;
-            case "H":
-
-                faceImage.sprite = face24;
-
-                index++;
-
-                break;
-            case "I":
-
-                faceImage.sprite = face17;
-
-                index++;
-
-                break;
-            
-            
-            
-
-            
 
         }
-
-        /*for(int i=0; i<textList[index].Length; i++ )
-        {
-            textLabel.text  += textList[index][i];
-
-            yield return new WaitForSeconds(textSpeed);
-        }*/
 
         int letter = 0;
         while(!cancelTyping && letter < textList[index].Length-1)
@@ -192,7 +125,18 @@ public class Dialogue5 : MonoBehaviour
         textFinished = true;//輸出完畢
         index++;
 
+    }
 
+    public void 跳過劇情() 
+    {
+        index = 26;
+        if ( index == textList.Count)
+        {
+            gameObject.SetActive(false);
+            index = 0;
+            SceneManager.LoadScene("街道打鬥");
+            return;
+        }
     }
 
 }

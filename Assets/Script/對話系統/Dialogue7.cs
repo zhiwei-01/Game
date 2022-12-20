@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Dialogue7 : MonoBehaviour
 {
+    [Header("要隱藏的UI")]
+    public GameObject 打鬥UI;
+
     [Header("UI組件")]
     public Text textLabel;
-    public Image faceImage;
+    public Image 臉;
    
     
     [Header("文字腳本4")]
@@ -18,7 +21,12 @@ public class Dialogue7 : MonoBehaviour
     public GameObject tip;
 
     [Header("角色")]
-    public Sprite face00,face21,face18,face22,face19,face23,face20,face24,face17;
+    public Sprite 旁00;
+    public Sprite 友31;
+    public Sprite 男27;
+    public Sprite 男28;
+    public Sprite 主15;
+    public Sprite 主17;
 
     bool textFinished;//是否完成打字
     bool cancelTyping;//取消打字
@@ -44,16 +52,9 @@ public class Dialogue7 : MonoBehaviour
         {
             gameObject.SetActive(false);
             index = 0;
-            SceneManager.LoadScene("街道");
+            //SceneManager.LoadScene("街道");
             return;
-
         }
-        
-        /* if(Input.GetKeyDown(KeyCode.Space) && textFinished)//檢測當前行是否輸出完
-        {
-            
-            StartCoroutine(SetTextUI());
-        }*/
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -100,85 +101,36 @@ public class Dialogue7 : MonoBehaviour
         switch (textList[index].Trim().ToString())
 
         {
-
-            case "A":
-
-                faceImage.sprite = face00;
-
+            case "旁":
+                臉.sprite = 旁00;
                 index++;
-
                 break;
 
-            case "B":
-
-                faceImage.sprite = face21;
-
+            case "友":
+                臉.sprite = 友31;
                 index++;
-
                 break;
-            case "C":
 
-                faceImage.sprite = face18;
-
+            case "男27":
+                臉.sprite = 男27;
                 index++;
-
-                break;
-            case "D":
-
-                faceImage.sprite = face22;
-
+                break;       
+        
+            case "男28":
+                臉.sprite = 男28;
                 index++;
-
                 break;
-            case "E":
 
-                faceImage.sprite = face19;
-
+           case "主15":
+                臉.sprite = 主15;
                 index++;
-
                 break;
-            case "F":
 
-                faceImage.sprite = face23;
-
+           case "主17":
+                臉.sprite = 主17;
                 index++;
-
                 break;
-            case "G":
-
-                faceImage.sprite = face20;
-
-                index++;
-
-                break;
-            case "H":
-
-                faceImage.sprite = face24;
-
-                index++;
-
-                break;
-            case "I":
-
-                faceImage.sprite = face17;
-
-                index++;
-
-                break;
-            
-            
-            
-
-            
-
         }
-
-        /*for(int i=0; i<textList[index].Length; i++ )
-        {
-            textLabel.text  += textList[index][i];
-
-            yield return new WaitForSeconds(textSpeed);
-        }*/
 
         int letter = 0;
         while(!cancelTyping && letter < textList[index].Length-1)
@@ -191,8 +143,19 @@ public class Dialogue7 : MonoBehaviour
         cancelTyping = false;
         textFinished = true;//輸出完畢
         index++;
+    }
 
+    public void 跳過劇情() 
+    {
+        index = 38;
 
+        if ( index == textList.Count)
+        {
+            gameObject.SetActive(false);
+            index = 0;
+            //SceneManager.LoadScene("街道");
+            return;
+        }
     }
 
 }
