@@ -44,7 +44,7 @@ public class Dialogue5 : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && index == textList.Count)
+        if((Input.GetKeyDown(KeyCode.Space) && index == textList.Count) || (Input.GetKeyDown(KeyCode.Q) && index == textList.Count))
         {
             gameObject.SetActive(false);
             index = 0;
@@ -53,7 +53,7 @@ public class Dialogue5 : MonoBehaviour
 
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Q))
         {
             if(textFinished && !cancelTyping)
             {
