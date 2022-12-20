@@ -11,7 +11,7 @@ public class 主角移動街道使用 : MonoBehaviour
     Animator jumpAn;
     Animator attackAn;
     Animator maginAttackAn;
-
+ 
 
     public bool isGround;//有沒有在地板
     public Transform checker;//檢查器的transform
@@ -29,6 +29,7 @@ public class 主角移動街道使用 : MonoBehaviour
         jumpAn = GetComponent<Animator>();   
         attackAn = GetComponent<Animator>();
         maginAttackAn = GetComponent<Animator>();
+      
         
     }
 
@@ -44,6 +45,9 @@ public class 主角移動街道使用 : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             attackAn.SetBool("attack",true);
+           
+
+
         }
         else
         {
@@ -53,6 +57,7 @@ public class 主角移動街道使用 : MonoBehaviour
          if(Input.GetKey("e"))
         {
             attackAn.SetBool("maginAttack",true);
+           
         }
         else
         {
