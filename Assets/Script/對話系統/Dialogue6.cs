@@ -6,24 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class Dialogue6 : MonoBehaviour
 {
+    [Header("要隱藏的UI")]
+    public GameObject 打鬥UI;
+
     [Header("UI組件")]
     public Text textLabel;
-    public Image faceImage;
+    public Image 臉;
    
     
-    [Header("文字腳本4")]
+    [Header("文字腳本")]
     public TextAsset textFile;
     public int index;
     public float textSpeed;
     public GameObject tip;
 
     [Header("角色")]
-    public Sprite face00,face21,face18,face22,face19,face23,face20,face24,face17;
+    public Sprite 旁白;
+    public Sprite 主15;
+    public Sprite 主16;
+    public Sprite 主17;
+    public Sprite 男25;
+    public Sprite 男26;
+    public Sprite 男28;
 
     bool textFinished;//是否完成打字
     bool cancelTyping;//取消打字
 
     List<string> textList = new List<string>();
+
     void Awake()
     {
         GetTextFormFile(textFile);       
@@ -31,31 +41,20 @@ public class Dialogue6 : MonoBehaviour
     
     private void OnEnable()
     {
-        //textLabel.text = textList[index];
-        //index++;
         textFinished = true;
         StartCoroutine(SetTextUI());
-        
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && index == textList.Count)
+        if ((Input.GetKeyDown(KeyCode.Space) && index == textList.Count) || (Input.GetKeyDown(KeyCode.Q) && index == textList.Count))
         {
             gameObject.SetActive(false);
             index = 0;
-            SceneManager.LoadScene("街道");
             return;
-
         }
-        
-        /* if(Input.GetKeyDown(KeyCode.Space) && textFinished)//檢測當前行是否輸出完
-        {
-            
-            StartCoroutine(SetTextUI());
-        }*/
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Q))
         {
             if(textFinished && !cancelTyping)
             {
@@ -75,8 +74,6 @@ public class Dialogue6 : MonoBehaviour
         {
             tip.SetActive(false);
         }
-
-      
 
     }
 
@@ -98,87 +95,44 @@ public class Dialogue6 : MonoBehaviour
         textLabel.text = "";
 
         switch (textList[index].Trim().ToString())
-
         {
-
-            case "A":
-
-                faceImage.sprite = face00;
-
+            case "旁":
+                臉.sprite = 旁白;
                 index++;
-
                 break;
 
-            case "B":
-
-                faceImage.sprite = face21;
-
+            case "主15":
+                臉.sprite = 主15;
                 index++;
-
                 break;
-            case "C":
 
-                faceImage.sprite = face18;
-
+            case "主16":
+                臉.sprite = 主16;
                 index++;
-
                 break;
-            case "D":
 
-                faceImage.sprite = face22;
-
+            case "主17":
+                臉.sprite = 主17;
                 index++;
-
                 break;
-            case "E":
 
-                faceImage.sprite = face19;
-
+            case "男25":
+                臉.sprite = 男25;
                 index++;
-
                 break;
-            case "F":
 
-                faceImage.sprite = face23;
-
+            case "男26":
+                臉.sprite = 男26;
                 index++;
-
                 break;
-            case "G":
 
-                faceImage.sprite = face20;
-
+            case "男28":
+                臉.sprite = 男28;
                 index++;
-
                 break;
-            case "H":
-
-                faceImage.sprite = face24;
-
-                index++;
-
-                break;
-            case "I":
-
-                faceImage.sprite = face17;
-
-                index++;
-
-                break;
-            
-            
-            
-
-            
 
         }
 
-        /*for(int i=0; i<textList[index].Length; i++ )
-        {
-            textLabel.text  += textList[index][i];
-
-            yield return new WaitForSeconds(textSpeed);
-        }*/
 
         int letter = 0;
         while(!cancelTyping && letter < textList[index].Length-1)
@@ -192,7 +146,18 @@ public class Dialogue6 : MonoBehaviour
         textFinished = true;//輸出完畢
         index++;
 
+    }
 
+    public void 跳過劇情() 
+    {
+        index = 29 ;
+
+        if (  index == textList.Count)
+        {
+            gameObject.SetActive(false);
+            index = 0;
+            return;
+        }
     }
 
 }
