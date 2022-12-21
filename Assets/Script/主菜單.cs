@@ -10,7 +10,7 @@ public class 主菜單 : MonoBehaviour
 
     public void 開始遊戲(string sceneName)
     {
-        SceneManager.LoadScene("一樓-開場");
+        SceneManager.LoadScene("宣傳影片");
     }
     public void 回主選單(string sceneName)
     {
