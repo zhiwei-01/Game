@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Dialogue4 : MonoBehaviour
 {
+    [Header("像素角色 + 鏡頭")]
+    public GameObject 像素人;
+    public GameObject 鏡頭;
+
     [Header("目前狀態")]
     public GameObject 目前場景;
     public GameObject 下個場景;
@@ -22,7 +26,16 @@ public class Dialogue4 : MonoBehaviour
     public GameObject tip;
 
     [Header("角色")]
-    public Sprite face00,face21,face18,face22,face19,face23,face20,face24,face17;
+    public Sprite 旁00;
+    public Sprite 主15;
+    public Sprite 主18;
+    public Sprite 主19;
+    public Sprite 主20;
+    public Sprite 媽21;
+    public Sprite 媽22;
+    public Sprite 媽23;
+    public Sprite 媽24;
+
 
     bool textFinished;//是否完成打字
     bool cancelTyping;//取消打字
@@ -35,11 +48,10 @@ public class Dialogue4 : MonoBehaviour
     
     private void OnEnable()
     {
-        //textLabel.text = textList[index];
-        //index++;
         textFinished = true;
         StartCoroutine(SetTextUI());
-        
+        像素人.SetActive(true);
+        //鏡頭.transform.localPosition = new Vector3 ( -5.4f , 0.45f , -5f );
     }
 
     void Update()
@@ -53,11 +65,6 @@ public class Dialogue4 : MonoBehaviour
 
         }
         
-        /* if(Input.GetKeyDown(KeyCode.Space) && textFinished)//檢測當前行是否輸出完
-        {
-            
-            StartCoroutine(SetTextUI());
-        }*/
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -105,78 +112,54 @@ public class Dialogue4 : MonoBehaviour
 
         {
 
-            case "A":
-
-                faceImage.sprite = face00;
-
+            case "旁":
+                faceImage.sprite = 旁00;
                 index++;
-
                 break;
 
-            case "B":
-
-                faceImage.sprite = face21;
-
+            case "主18":
+                faceImage.sprite = 主18;
                 index++;
-
                 break;
-            case "C":
 
-                faceImage.sprite = face18;
-
+            case "主19":
+                faceImage.sprite = 主19;
                 index++;
-
                 break;
-            case "D":
 
-                faceImage.sprite = face22;
-
+            case "主20":
+                faceImage.sprite = 主20;
                 index++;
-
                 break;
-            case "E":
 
-                faceImage.sprite = face19;
-
+            case "主15":
+                faceImage.sprite = 主15;
                 index++;
-
                 break;
-            case "F":
 
-                faceImage.sprite = face23;
-
+            case "媽21":
+                faceImage.sprite = 媽21;
                 index++;
-
                 break;
-            case "G":
 
-                faceImage.sprite = face20;
-
+            case "媽22":
+                faceImage.sprite = 媽22;
                 index++;
-
                 break;
-            case "H":
 
-                faceImage.sprite = face24;
-
+            case "媽23":
+                faceImage.sprite = 媽23;
                 index++;
-
                 break;
-            case "I":
-                faceImage.sprite = face17;
 
+            case "媽24":
+                faceImage.sprite = 媽24;
                 index++;
-
                 break;
 
         }
 
-        /*for(int i=0; i<textList[index].Length; i++ )
-        {
-            textLabel.text  += textList[index][i];
 
-            yield return new WaitForSeconds(textSpeed);
-        }*/
 
         int letter = 0;
         while(!cancelTyping && letter < textList[index].Length-1)
@@ -194,6 +177,6 @@ public class Dialogue4 : MonoBehaviour
     }
     public void 點擊按鈕()
     {
-        index = 40;
+        index = 39;
     }
 }

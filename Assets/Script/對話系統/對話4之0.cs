@@ -13,6 +13,10 @@ public class 對話4之0 : MonoBehaviour
     public GameObject 控制過場;
     public Animator 過場;
 
+    [Header("像素角色 + 鏡頭")]
+    public GameObject 像素人;
+    public GameObject 鏡頭;
+
     [Header("UI組件")]
     public Text textLabel;
     public Image 畫面;
@@ -53,6 +57,12 @@ public class 對話4之0 : MonoBehaviour
             下個場景.SetActive(true);
             index = 0;
             return;
+        }
+
+        if (index == 12) 
+        {
+            像素人.SetActive(false);
+            鏡頭.transform.localPosition = new Vector3(-5.4f, 0.45f, -5f);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -140,6 +150,8 @@ public class 對話4之0 : MonoBehaviour
     public void 點擊按鈕()
     {
         index = 13;
+        像素人.SetActive(false);
+        鏡頭.transform.localPosition = new Vector3(-5.4f, 0.45f, -5f);
     }
 
 }
