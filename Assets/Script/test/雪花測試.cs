@@ -5,7 +5,7 @@ using UnityEngine;
 public class 雪花測試 : MonoBehaviour
 {
     
-  public GameObject  an;
+  public Animator SnowAn;
   
 
   
@@ -13,15 +13,23 @@ public class 雪花測試 : MonoBehaviour
     void Awake()
     {
       
-      an.SetActive(false);
+      //an.SetActive(false);
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-         
-       if (Input.GetKeyDown("space"))
+      if (Input.GetKeyDown("e"))
+        {
+           SnowAn.SetBool("snow",true);
+        }   
+
+      else 
+      {
+          SnowAn.SetBool("snow",false);
+      }
+      /*if (Input.GetKeyDown("e"))
       {
         an.SetActive(true);
         Debug.Log("owo???????");
@@ -30,7 +38,7 @@ public class 雪花測試 : MonoBehaviour
       else
       { 
         an.SetActive(false);
-      }
+      }*/
 
       
     }
